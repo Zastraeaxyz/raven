@@ -1,0 +1,6 @@
+[tasks.deploy]
+description = "Deploy latest version to railway"
+run = '''
+railway variable set "BUILD_VERSION=$(git rev-parse --short HEAD) $(git log -1 --pretty=%s)" --skip-deploys
+railway up -m "$(git log -1 --pretty=%s)"
+'''
